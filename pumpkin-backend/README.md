@@ -38,3 +38,7 @@ Meu endpoint será chamado de “vacinados”, sendo assim, como padrão do Spri
 A rota do tipo POST, utiliza este método chamando findCpfOrEmailCadastrado, onde o mesmo utiliza as querys do repositório e retorna uma String vazia ou com uma mensagem personalizada dizendo o que foi encontrado. Assim, eu apenas faço um tratamento utilizando essa String como base, e enviando ela para o método personalizado de warning caso ela não esteja vazia ou passando uma nova mensagem e passado ela para o método personalizado de success. Além de claro, passar como parâmetro os requisitos de Bad Request e Created.
 
 ![alt text](https://i.ibb.co/xq5KYxW/post.png)
+
+Esses métodos se encontram em um pacote chamado util que possui uma classe chamada ResponseUtil, com o objetivo de melhorar e especificar as respostas da API.
+
+![alt text](https://i.ibb.co/tsx3LYd/Respose.png)
