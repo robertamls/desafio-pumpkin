@@ -45,6 +45,10 @@ Esses métodos se encontram em um pacote chamado util que possui uma classe cham
 
 ![alt text](https://i.ibb.co/tsx3LYd/Respose.png)
   
-Além da rota GetAll, eu também criei uma outra rota do tipo GET que busca especificamente por ID. Esta utiliza o método padrão findById para tratamento.
+Além da rota GetAll, eu também criei uma outra rota do tipo GET que busca especificamente por ID. Esta utiliza o método padrão findById para tratamento. Aproveitei para usar o status NO_CONTENT já que o mesmo se refere a não haver conteudo para a solicitação.
   
 ![alt text](https://i.ibb.co/sbxp3Xb/getid.png)
+  
+A rota de PUT utiliza o método existsById que retorna um booleano, e caso o mesmo seja encontrado faço uma nova validação de CPF e E-mail para conferir que atualização não consiste em dados repetidos que devem ser únicos para só então liberar a alteração. E caso não entre um id existente, retorno novamente um status de NO_CONTENT.
+  
+![alt text](https://i.ibb.co/GCWcwRd/put.png)
