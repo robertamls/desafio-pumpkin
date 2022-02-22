@@ -27,7 +27,7 @@ Se tratando da comunicação com o banco, além de realizar toda a configuraçã
 
 ![alt text](https://i.ibb.co/1m8Ckn5/Pessoa.png)
 
-Os métodos implementados no repositório possuem o objetivo de buscar e-mails e CPFs já existentes no banco, utilizando uma SQL query setada como nativa. Utilizei Optional<T> para um melhor tratamento do retorno.
+Os métodos implementados no repositório possuem o objetivo de buscar e-mails e CPFs já existentes no banco, utilizando uma SQL query setada como nativa. Utilizei Optional<T> para um melhor tratamento do retorno, e aproveitar o recurso isPresent(), que ajuda muito nas validações.
 
 ![alt text](https://i.ibb.co/gVM0vWt/repositorio.png)
 
@@ -44,3 +44,7 @@ A rota do tipo POST, utiliza justamente o método citado acima chamando de findC
 Esses métodos se encontram em um pacote chamado util que possui uma classe chamada ResponseUtil, com o objetivo de melhorar e especificar as respostas da API.
 
 ![alt text](https://i.ibb.co/tsx3LYd/Respose.png)
+  
+Além da rota GetAll, eu também criei uma outra rota do tipo GET que busca especificamente por ID. Esta utiliza o método padrão findById para tratamento.
+  
+![alt text](https://i.ibb.co/sbxp3Xb/getid.png)
