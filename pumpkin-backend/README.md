@@ -31,6 +31,10 @@ Os métodos implementados no repositório possuem o objetivo de buscar e-mails e
 
 ![alt text](https://i.ibb.co/gVM0vWt/repositorio.png)
 
-Meu endpoint será chamado de “vacinados”, sendo assim, como padrão do Spring utilizei as @annotations essenciais para o papel do controller seja feito corretamente. Eu poderia simplesmente declarar o PessoaRepository, mas dada a minha forma de organização e preferência, criei um service pois já imaginava a reutilização de um método especifico. A rota do tipo POST, utiliza este método chamando findCpfOrEmailCadastrado, onde o mesmo utiliza as querys do repositório e retorna uma String vazia ou com uma mensagem personalizada dizendo o que foi encontrado. Assim, eu apenas faço um tratamento utilizando essa String como base, e enviando ela para o método personalizado de warning caso ela não esteja vazia ou passando uma nova mensagem e passado ela para o método personalizado de success. Além de claro, passar como parâmetro os requisitos de Bad Request e Created.
+Meu endpoint será chamado de “vacinados”, sendo assim, como padrão do Spring utilizei as @annotations essenciais para que o papel do controller seja feito corretamente. Eu poderia simplesmente declarar o PessoaRepository, mas dada a minha forma de organização e preferência, criei um service pois já imaginava a reutilização de um método especifico. O método pessoas busca todos os cadastros no banco retornando uma coleção.
+  
+![alt text](https://i.ibb.co/W0WkYR8/all.png)
+
+A rota do tipo POST, utiliza este método chamando findCpfOrEmailCadastrado, onde o mesmo utiliza as querys do repositório e retorna uma String vazia ou com uma mensagem personalizada dizendo o que foi encontrado. Assim, eu apenas faço um tratamento utilizando essa String como base, e enviando ela para o método personalizado de warning caso ela não esteja vazia ou passando uma nova mensagem e passado ela para o método personalizado de success. Além de claro, passar como parâmetro os requisitos de Bad Request e Created.
 
 ![alt text](https://i.ibb.co/xq5KYxW/post.png)
