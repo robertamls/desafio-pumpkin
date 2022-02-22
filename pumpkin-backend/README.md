@@ -52,3 +52,9 @@ Além da rota GetAll, eu também criei uma outra rota do tipo GET que busca espe
 A rota de PUT utiliza o método existsById que retorna um booleano, e caso o mesmo seja encontrado faço uma nova validação de CPF e E-mail para conferir que atualização não consiste em dados repetidos que devem ser únicos para só então liberar a alteração. E caso não entre um id existente, retorno novamente um status de NO_CONTENT.
   
 ![alt text](https://i.ibb.co/GCWcwRd/put.png)
+
+Por fim para a rota DELETE, eu também utilizo o método findById para encontrar o dado, e caso ele exista realizo uma verificação se pessoa está "completo" para então utilizar o deleteById. E novamente caso não encontre, eu retorno um status de NO_CONTENT.
+
+![alt text](https://i.ibb.co/VY2V68S/delete.png)
+
+Como pode ser visto todos os métodos seguem um padrão de tratamento e reutilização de métodos. Eu ressalto que tenho noção de que há métodos de segurança para trabalhar com rotas autenticadas entra outras coisas para garantir a segurança dos dados, mas no caso e pelo tempo limitado e corrido, eu quis implementar um CRUD simples e explicações lógicas dos fluxos para vocês possuirem uma ideia de como penso e concluo.
