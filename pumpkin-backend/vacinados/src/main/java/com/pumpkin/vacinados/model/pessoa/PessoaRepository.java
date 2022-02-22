@@ -5,14 +5,14 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 
-public interface PessoaRepository  extends CrudRepository<Pessoa, Long> {
+public interface PessoaRepository extends CrudRepository<Pessoa, Long> {
 
     /**
      * Busca por cpf existente no banco
      * @param cpf
      * @return Objeto seja pessoa ou vazio
      */
-    @Query(value = "SELECT * FROM Pessoa p WHERE p.cpf LIKE ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM Pessoa WHERE cpf LIKE ?1", nativeQuery = true)
     Optional<Pessoa> findPessoaByCpf(String cpf);
 
     /**

@@ -57,10 +57,15 @@ public class PessoaController {
         String responsePessoa;
         boolean encontrado = service.existsById(id);
         if(encontrado){
-            pessoa.setId(id);
-            Pessoa dadosAlterados = service.persistDados(pessoa);
-            responsePessoa = "Dados alterados.";
-            return ResponseUtil.sucessMessage(responsePessoa, dadosAlterados, HttpStatus.OK);
+            responsePessoa = service.findCpfOrEmailCadastrado(pessoa.getCpf(), pessoa.getEmail());
+            if(!responsePessoa.equals("")) {
+                return ResponseUtil.warningMessage(responsePessoa, HttpStatus.BAD_REQUEST);
+            } else {
+                pessoa.setId(id);
+                Pessoa dadosAlterados = service.persistDados(pessoa);
+                responsePessoa = "Dados alterados.";
+                return ResponseUtil.sucessMessage(responsePessoa, dadosAlterados, HttpStatus.OK);
+            }
         } else{
             responsePessoa = "Dados não encontrados.";
             return ResponseUtil.warningMessage(responsePessoa, HttpStatus.NO_CONTENT);
