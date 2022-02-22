@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/vacinados")
+@CrossOrigin(origins = "http://localhost:3000")
 public class PessoaController {
 
     @Autowired
@@ -25,14 +26,14 @@ public class PessoaController {
         return new ResponseEntity<>(pessoas, HttpStatus.OK);
     }
 
-    @PostMapping(produces="application/json")
+    @PostMapping(produces = "application/json")
     public ResponseEntity<Object> insertPessoa(@Valid @RequestBody Pessoa pessoa) {
         String responsePessoa;
         responsePessoa = service.findCpfOrEmailCadastrado(pessoa.getCpf(), pessoa.getEmail());
 
-        if(!responsePessoa.equals("")) {
+        if (!responsePessoa.equals("")) {
             return ResponseUtil.warningMessage(responsePessoa, HttpStatus.BAD_REQUEST);
-        } else{
+        } else {
             Pessoa novosDados = service.persistDados(pessoa);
             responsePessoa = "Dados cadastrados.";
             return ResponseUtil.sucessMessage(responsePessoa, novosDados, HttpStatus.CREATED);
@@ -43,7 +44,7 @@ public class PessoaController {
     public ResponseEntity<Object> getPessoaById(@PathVariable Long id) {
         String responsePessoa;
         Optional<Pessoa> pessoa = service.findById(id);
-        if(pessoa.isPresent()){
+        if (pessoa.isPresent()) {
             responsePessoa = "Dados encontrados.";
             Pessoa dadosencontrados = pessoa.get();
             return ResponseUtil.sucessMessage(responsePessoa, dadosencontrados, HttpStatus.OK);
@@ -55,18 +56,28 @@ public class PessoaController {
     @PutMapping(path = "/{id}")
     public ResponseEntity<Object> updatePessoa(@RequestBody Pessoa pessoa, @PathVariable Long id) {
         String responsePessoa;
-        boolean encontrado = service.existsById(id);
-        if(encontrado){
-            responsePessoa = service.findCpfOrEmailCadastrado(pessoa.getCpf(), pessoa.getEmail());
-            if(!responsePessoa.equals("")) {
-                return ResponseUtil.warningMessage(responsePessoa, HttpStatus.BAD_REQUEST);
-            } else {
+        Optional<Pessoa> dadosEncontrados = service.findById(id);
+        if (dadosEncontrados.isPresent()) {
+            Optional<Pessoa> verificacaoUnicaCPF = service.findPessoaByCpf(pessoa.getCpf());
+            Optional<Pessoa> verificacaoUnicaEmail = service.findPessoaByEmail(pessoa.getEmail());
+            if (!verificacaoUnicaCPF.isPresent() || !verificacaoUnicaEmail.isPresent()) {
                 pessoa.setId(id);
                 Pessoa dadosAlterados = service.persistDados(pessoa);
                 responsePessoa = "Dados alterados.";
                 return ResponseUtil.sucessMessage(responsePessoa, dadosAlterados, HttpStatus.OK);
+            } else {
+                if (!verificacaoUnicaCPF.get().getCpf().equals(pessoa.getCpf()) && !verificacaoUnicaCPF.get().getId().equals(id) ||
+                        !verificacaoUnicaEmail.get().getEmail().equals(pessoa.getEmail()) && !verificacaoUnicaEmail.get().getId().equals(id)) {
+                    pessoa.setId(id);
+                    Pessoa dadosAlterados = service.persistDados(pessoa);
+                    responsePessoa = "Dados alterados.";
+                    return ResponseUtil.sucessMessage(responsePessoa, dadosAlterados, HttpStatus.OK);
+                } else {
+                    responsePessoa = "Você está tentando inserir um dado já cadastrado.";
+                    return ResponseUtil.warningMessage(responsePessoa, HttpStatus.BAD_REQUEST);
+                }
             }
-        } else{
+        } else {
             responsePessoa = "Dados não encontrados.";
             return ResponseUtil.warningMessage(responsePessoa, HttpStatus.NO_CONTENT);
         }
@@ -76,7 +87,7 @@ public class PessoaController {
     public ResponseEntity<Object> deletePessoa(@PathVariable Long id) {
         String responsePessoa;
         Optional<Pessoa> pessoa = service.findById(id);
-        if(pessoa.isPresent()){
+        if (pessoa.isPresent()) {
             Pessoa dadosExcluidos = pessoa.get();
             service.deleteById(pessoa.get().getId());
             responsePessoa = "Dados excluídos.";

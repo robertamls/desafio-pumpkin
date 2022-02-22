@@ -56,6 +56,24 @@ public class PessoaService {
     }
 
     /**
+     * Busca por cpf existente no banco
+     * @param cpf
+     * @return Objeto seja pessoa ou vazio
+     */
+    public Optional<Pessoa> findPessoaByCpf(String cpf){
+        return repository.findPessoaByCpf(cpf);
+    }
+
+    /**
+     * Busca por e-mail existente no banco
+     * @param email
+     * @return Objeto seja pessoa ou vazio
+     */
+    public Optional<Pessoa> findPessoaByEmail(String email){
+        return repository.findPessoaByEmail(email);
+    }
+
+    /**
      * Método que realiza buscas no banco por cpf e e-mail existentes.
      * @param cpf
      * @param email

@@ -4,10 +4,7 @@ import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 @Entity
@@ -25,6 +22,7 @@ public class Pessoa {
 
     @Column(name = "dataNascimento")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotNull(message = "Data de nascimento obrigatória!")
     private LocalDate dataNascimento;
 
     @Column(name = "cpf", unique = true, nullable = false)
