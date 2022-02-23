@@ -49,9 +49,9 @@ Além da rota GetAll, eu também criei uma outra rota do tipo GET que busca espe
   
 ![alt text](https://i.ibb.co/sbxp3Xb/getid.png)
   
-A rota de PUT utiliza o método existsById que retorna um booleano, e caso o mesmo seja encontrado faço uma nova validação de CPF e E-mail para conferir que atualização não consiste em dados repetidos que devem ser únicos para só então liberar a alteração. E caso não entre um id existente, retorno novamente um status de NO_CONTENT.
+A rota de PUT também utiliza o método findById para encontrar os dados referente ao que foi passado no parâmetro e também realiza uma busca por CPF e E-mail para uma validação mais cuidadosa, eu realiza uma comparação do objeto atualmente salvo no banco e do que está entrando, com o objetivo de previnir a entrada de um CPF ou E-mail já cadastrado. E caso não entre um id existente, retorno novamente um status de NO_CONTENT.
   
-![alt text](https://i.ibb.co/GCWcwRd/put.png)
+![alt text](https://i.ibb.co/v1bqTmH/outraimagematualizada.png)
 
 Por fim para a rota DELETE, eu também utilizo o método findById para encontrar o dado, e caso ele exista realizo uma verificação se pessoa está "completo" para então utilizar o deleteById. E novamente caso não encontre, eu retorno um status de NO_CONTENT.
 
