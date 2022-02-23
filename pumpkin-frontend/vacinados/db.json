@@ -2,53 +2,8 @@
     "usuario": [
         {
             "id": 1,
-            "nome": "Roberta Mendes",
             "usuario": "admin",
             "senha": "admin"
-        }
-    ],
-    "pessoa": [
-        {
-            "id": 1,
-            "nome": "Luiz Antonio Ribeiro",
-            "dataNascimento": "15/04/1985",
-            "cpf": "456.897.212.56",
-            "vacinacaoEmDia": true
-        },
-        {
-            "id": 2,
-            "nome": "Ana Clara Domingos",
-            "dataNascimento": "02/03/2001",
-            "cpf": "125.879.358-99",
-            "vacinacaoEmDia": false
-        },
-        {
-            "id": 3,
-            "nome": "Larissa Mendes",
-            "dataNascimento": "16/02/2005",
-            "cpf": "755.963.978-52",
-            "vacinacaoEmDia": false
-        },
-        {
-            "id": 4,
-            "nome": "Alberto Teodoro",
-            "dataNascimento": "25/08/1955",
-            "cpf": "023.654.777-59",
-            "vacinacaoEmDia": true
-        }
-    ],
-    "vacina": [
-        {
-            "id": 1,
-            "nome": "Tétano"
-        },
-        {
-            "id": 2,
-            "nome": "Febre Amarela"
-        },
-        {
-            "id": 3,
-            "nome": "Gripe"
         }
     ]
 }

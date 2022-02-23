@@ -17,6 +17,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { mainListItems } from './components/listItems';
+import TableVacinas from './components/TableVacinas';
 import zeGotinha from './assets/ze-gotinha.gif'
 
 function Copyright(props) {
@@ -122,7 +123,7 @@ function DashboardContent() {
                         </IconButton>
                     </Toolbar>
                 </AppBar>
-                <Drawer variant="permanent" open={open} >
+                <Drawer variant="permanent" open={open}>
                     <Toolbar
                         sx={{
                             display: 'flex',
@@ -131,7 +132,7 @@ function DashboardContent() {
                             px: [1],
                         }}
                     >
-                         <img src={zeGotinha} alt="Zé-Gotinha" className='logo'/>
+                            <img src={zeGotinha} alt="Zé-Gotinha" className='logo'/>
                         <IconButton onClick={toggleDrawer}>
                             <ChevronLeftIcon />
                         </IconButton>
@@ -158,7 +159,7 @@ function DashboardContent() {
                         <Grid container spacing={3}>
                             <Grid item xs={12}>
                                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                                
+                                <TableVacinas/>
                                 </Paper>
                             </Grid>
                         </Grid>

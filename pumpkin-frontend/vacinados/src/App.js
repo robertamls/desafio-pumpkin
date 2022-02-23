@@ -1,45 +1,22 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState } from 'react';
-
-import zeGotinha from './assets/ze-gotinha.gif'
-
 import './style.css'
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Login from './Login';
+import Home from './Home';
+import TableCriancas from './Criancas';
+import TableVacinas from './Vacinas';
+import ErrorRoute from './ErrorRoute';
 
 function App() {
-  const [user, setUser] = useState("")
-  const [pass, setPass] = useState("")
   return (
-    <div className="container">
-      <div className="container-login">
-        <div className="wrap-login">
-          <form className="login-form">
-            <span className="login-form-title">Vacinados</span>
-            <span className="login-form-title">
-            <img src={zeGotinha} alt="Zé-Gotinha"/>
-            </span>
-
-            <div className="wrap-input">
-              <input className={user !== "" ?  'has-value input' : 'input'} type="user" value={user} onChange={e => setUser(e.target.value)}/>
-              <span className="effect-input" data-placeholder="Usuário"></span>
-            </div>
-
-            <div className="wrap-input">
-              <input className={pass !== "" ?  'has-value input' : 'input'} type="password" value={pass} onChange={e => setPass(e.target.value)}/>
-              <span className="effect-input" data-placeholder="Senha"></span>
-            </div>
-
-            <div className="container-login-form-btn">
-              <button className="login-form-btn">Login</button>
-            </div>
-
-            <div className="text-new-account">
-              <span className="text-um">Não possui conta?</span>
-              <a className="text-dois" href="#">Criar conta</a>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Login/>}/>
+        <Route exact path="/criancas" element={<TableCriancas/>}/>
+        <Route exact path="/vacinas" element={<TableVacinas/>}/>
+        <Route exact path="/home" element={<Home/>}/>
+        <Route path="*" element={<ErrorRoute/>}/>
+      </Routes>
+    </Router>
   );
 }
 

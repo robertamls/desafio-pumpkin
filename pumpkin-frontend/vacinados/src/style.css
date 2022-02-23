@@ -195,3 +195,12 @@ a { text-decoration: none; }
   .has-value + .effect-input::before{
     width: 100%;
 }
+
+.img-notFound{
+    width: 100%;
+}
+
+.logo{
+    width: 50%;
+    padding-right: 50px;
+}
