@@ -25,7 +25,7 @@ Como padrão MVC criei os pacotes model e controller, dentro de model separei pa
 
 Se tratando da comunicação com o banco, além de realizar toda a configuração das credenciais, eu também configurei o modo de operação do Hibernate para update e o seu dialeto. E para garantir todo esse gerenciamento automatizado, as @annotations me auxiliaram nas criações de entidades e validações de atributos, services. Uma ênfase boa a ser dada, é a utilização do GenerationType.IDENTITY, eu poderia muito bem utilizar AUTO e deixar a implementação da especificação escolher uma estratégia para geração dos ids, mas por optar por algo padronizado com AUTO_INCREMENT e menos complexo no momento, eu preferi o Identify ao invés de Table por exemplo.
 
-![alt text](https://i.ibb.co/1m8Ckn5/Pessoa.png)
+![alt text](https://i.ibb.co/tbqwNHV/imagem-Atualizada.png)
 
 Os métodos implementados no repositório possuem o objetivo de buscar e-mails e CPFs já existentes no banco, utilizando uma SQL query setada como nativa. Utilizei Optional<T> para um melhor tratamento do retorno, e aproveitar o recurso isPresent(), que ajuda muito nas validações.
 
