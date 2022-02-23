@@ -1,6 +1,4 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import Home from './Home'
 import { useState } from 'react';
 
 import zeGotinha from './assets/ze-gotinha.gif'
@@ -17,28 +15,21 @@ function App() {
           <form className="login-form">
             <span className="login-form-title">Vacinados</span>
             <span className="login-form-title">
-              <img src={zeGotinha} alt="Zé-Gotinha" />
+            <img src={zeGotinha} alt="Zé-Gotinha"/>
             </span>
 
             <div className="wrap-input">
-              <input className={user !== "" ? 'has-value input' : 'input'} type="user" value={user} onChange={e => setUser(e.target.value)} />
+              <input className={user !== "" ?  'has-value input' : 'input'} type="user" value={user} onChange={e => setUser(e.target.value)}/>
               <span className="effect-input" data-placeholder="Usuário"></span>
             </div>
 
             <div className="wrap-input">
-              <input className={pass !== "" ? 'has-value input' : 'input'} type="password" value={pass} onChange={e => setPass(e.target.value)} />
+              <input className={pass !== "" ?  'has-value input' : 'input'} type="password" value={pass} onChange={e => setPass(e.target.value)}/>
               <span className="effect-input" data-placeholder="Senha"></span>
             </div>
 
             <div className="container-login-form-btn">
-              <Router>
-                <Link className="login-form-btn" to="/home">Login</Link>
-                <Routes>
-                <Route path="/home" 
-                element={<Home />}> 
-                </Route>
-                </Routes>
-              </Router>
+              <button className="login-form-btn">Login</button>
             </div>
 
             <div className="text-new-account">

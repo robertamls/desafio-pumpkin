@@ -3,8 +3,8 @@
         {
             "id": 1,
             "nome": "Roberta Mendes",
-            "usuario": "robertamls",
-            "senha": "1234roberta"
+            "usuario": "admin",
+            "senha": "admin"
         }
     ],
     "pessoa": [
