@@ -16,7 +16,7 @@ Construção de uma API REST com apenas um endpoint.
 
 ## Desenvolvimento
 
-    Para o início do desenvolvimento da API REST utilizei o Spring Initializr, montando um projeto Maven com a linguagem Java e a versão 2.6.3 do Spring. Minha escolha por Maven, foi por puro favoritismo, e zona de conforto. Assim como a linguagem JAVA. A versão do Spring já escolhi manter um padrão pelo qual utilizei antes.
+Para o início do desenvolvimento da API REST utilizei o Spring Initializr, montando um projeto Maven com a linguagem Java e a versão 2.6.3 do Spring. Minha escolha por Maven, foi por puro favoritismo, e zona de conforto. Assim como a linguagem JAVA. A versão do Spring já escolhi manter um padrão pelo qual utilizei antes.
 
 Em relação as dependências foram adicionadas o Spring Boot DevTools, uma ferramenta que dá um ótimo suporte para o desenvolvimento, o Spring Web que é voltado para aplicações web e MVC, o Spring Data JPA e PostgreSQL Driver para fazer toda a comunicação com o banco e utilizando Hibernate.
 
