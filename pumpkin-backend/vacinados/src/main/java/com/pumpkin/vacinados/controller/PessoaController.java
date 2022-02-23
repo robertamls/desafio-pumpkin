@@ -13,7 +13,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/vacinados")
-@CrossOrigin(origins = "http://localhost:3000")
 public class PessoaController {
 
     @Autowired
